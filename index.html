@@ -49,6 +49,8 @@
     .site-header.scrolled, .site-header.menu-open { background: rgba(13,33,56,.98); box-shadow: 0 12px 36px rgba(4,15,27,.22); }
     .nav-link::after { content: ""; position: absolute; left: 0; bottom: .25rem; width: 100%; height: 1px; background: #E4AB3F; transform: scaleX(0); transform-origin: right; transition: transform .22s ease; }
     .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
+    [data-dropdown].is-open [data-dropdown-panel] { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+    [data-dropdown].is-open [data-dropdown-caret] { transform: rotate(180deg); }
     .mobile-nav.open { opacity: 1; visibility: visible; transform: translateY(0); }
     .mobile-toggle[aria-expanded="true"] { border-color: rgba(228,171,63,.8); background: rgba(228,171,63,.1); color: #F1C86F; }
     .mobile-toggle[aria-expanded="true"] .menu-line:nth-of-type(1) { transform: translateY(7px) rotate(45deg); }
@@ -86,13 +88,35 @@
   <header class="site-header fixed inset-x-0 top-0 z-50 h-20 border-b border-white/10 text-white transition duration-300" id="top">
     <div class="section-shell relative z-50 flex h-full items-center justify-between gap-6">
       <a href="#home" class="flex items-center gap-3" aria-label="Credence Certification Services home">
-        <span class="relative size-10 shrink-0 rounded-full border-4 border-white border-r-transparent" aria-hidden="true"><i class="absolute top-[9px] left-[13px] h-2.5 w-4 -rotate-45 border-b-4 border-l-4 border-gold"></i></span>
+        <span class="grid size-10 shrink-0 place-items-center rounded-lg bg-paper p-1 shadow-sm" aria-hidden="true">
+          <svg viewBox="0 0 64 64" class="size-full"><path d="M44 16.5A19.5 19.5 0 1 0 44 47.5" fill="none" stroke="#142E50" stroke-width="7" stroke-linecap="round"/><path d="m26 32.5 6.5 6.5 13-15" fill="none" stroke="#C9920F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
         <span class="grid gap-1 leading-none"><strong class="font-display text-lg tracking-[.12em] uppercase">Credence</strong><small class="font-mono text-[8px] tracking-[.16em] text-gold-light uppercase">Certification Services</small></span>
       </a>
 
-      <nav class="hidden items-center gap-4 font-mono text-[11px] tracking-[.02em] uppercase xl:flex" aria-label="Primary navigation">
-        <a class="nav-link relative py-3" href="#home">Home</a><a class="nav-link relative py-3" href="#about">About</a><a class="nav-link relative py-3" href="#services">Services</a><a class="nav-link relative py-3" href="#process">Process</a><a class="nav-link relative py-3" href="#who-we-serve">Who we serve</a><a class="nav-link relative py-3" href="#empanelment">Empanelment</a><a class="nav-link relative py-3" href="#contact">Contact</a>
-        <a href="#contact" class="ml-2 inline-flex min-h-12 items-center gap-4 rounded-lg border border-white/40 px-4 transition hover:border-gold hover:bg-gold hover:text-navy-deep">Request a quote <span aria-hidden="true">↗</span></a>
+      <nav class="hidden items-center gap-3.5 font-mono text-[11px] tracking-[.02em] uppercase xl:flex" aria-label="Primary navigation">
+        <a class="nav-link relative py-3" href="#home">Home</a><a class="nav-link relative py-3" href="#about">About</a>
+        <div class="relative" data-dropdown>
+          <button type="button" class="nav-link relative inline-flex cursor-pointer items-center gap-1.5 py-3 uppercase" data-dropdown-toggle aria-expanded="false" aria-haspopup="true">Services <span data-dropdown-caret class="text-[9px] text-gold transition-transform duration-200" aria-hidden="true">▾</span></button>
+          <div class="pointer-events-none invisible absolute top-full left-0 z-50 mt-1 w-80 -translate-y-1.5 border border-white/15 bg-navy-deep p-3 text-left normal-case shadow-premium opacity-0 transition duration-200" data-dropdown-panel role="menu">
+            <a href="#services" class="block rounded-md px-3 py-2.5 transition hover:bg-white/5" role="menuitem">
+              <span class="block font-mono text-[10px] tracking-[.12em] text-gold uppercase">Certification portfolio</span>
+              <span class="mt-0.5 block font-display text-base font-semibold tracking-wide text-white uppercase">All Certification Schemes</span>
+            </a>
+            <div class="my-2 border-t border-white/15"></div>
+            <p class="px-3 pt-1 pb-1.5 font-mono text-[10px] tracking-[.12em] text-gold uppercase">Climate, Carbon &amp; Sustainability Assurance</p>
+            <a href="services/cbam-verification/" class="block rounded-md border border-gold/30 bg-navy p-3 transition hover:border-gold hover:bg-navy-medium" role="menuitem">
+              <span class="flex items-center justify-between gap-2">
+                <span class="font-display text-base font-semibold tracking-wide text-white uppercase">CBAM Verification</span>
+                <span class="rounded bg-gold px-1.5 py-0.5 font-mono text-[9px] font-semibold text-navy-deep uppercase">EU / UK</span>
+              </span>
+              <span class="mt-1 block text-xs leading-5 text-white/65">Readiness &amp; pre-verification of embedded emissions for exporters</span>
+            </a>
+            <a href="#services" class="mt-1.5 block rounded-md px-3 py-2 text-xs text-white/75 transition hover:bg-white/5 hover:text-gold-light" role="menuitem">ISO 14064-1/2/3 GHG Verification →</a>
+          </div>
+        </div>
+        <a class="nav-link relative py-3" href="#process">Process</a><a class="nav-link relative py-3" href="#who-we-serve">Who we serve</a><a class="nav-link relative py-3" href="#empanelment">Empanelment</a><a class="nav-link relative py-3" href="resources/">Resources</a><a class="nav-link relative py-3" href="#contact">Contact</a>
+        <a href="#contact" class="ml-1 inline-flex min-h-11 items-center gap-3 rounded-lg border border-white/40 px-3.5 transition hover:border-gold hover:bg-gold hover:text-navy-deep">Request a quote <span aria-hidden="true">↗</span></a>
       </nav>
 
       <button class="mobile-toggle grid size-11 shrink-0 place-items-center rounded-lg border border-white/25 bg-white/[.04] text-white transition duration-200 hover:border-gold hover:text-gold-light xl:hidden" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation">
@@ -104,7 +128,15 @@
     <nav class="mobile-nav invisible fixed inset-0 z-40 flex -translate-y-3 flex-col overflow-y-auto bg-navy-deep px-5 pt-28 pb-8 opacity-0 transition duration-200 xl:hidden" id="mobile-nav" aria-label="Mobile navigation">
       <p class="eyebrow mb-3 text-gold">Navigation</p>
       <div class="grid">
-        <a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#home">Home <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a><a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#about">About <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a><a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#services">Services <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a><a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#process">Process <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a><a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#who-we-serve">Who we serve <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a><a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#empanelment">Empanelment <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a><a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#contact">Contact <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a>
+        <a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#home">Home <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a><a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#about">About <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a>
+        <div class="border-b border-white/15 py-3">
+          <a class="flex items-center justify-between font-display text-2xl uppercase" href="#services">Services <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a>
+          <div class="mt-2.5 border-l-2 border-gold pl-4">
+            <p class="font-mono text-[10px] tracking-[.12em] text-gold uppercase">Climate, Carbon &amp; Sustainability Assurance</p>
+            <a class="mt-1.5 flex items-center justify-between py-1 font-display text-lg text-white/90 uppercase" href="services/cbam-verification/">CBAM Verification <span class="font-mono text-xs text-gold-light" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#process">Process <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a><a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#who-we-serve">Who we serve <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a><a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#empanelment">Empanelment <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a><a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="resources/">Resources <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a><a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="#contact">Contact <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a>
       </div>
       <div class="mt-7 grid grid-cols-2 gap-3">
         <a class="inline-flex min-h-12 items-center justify-center rounded-lg border border-gold bg-gold px-3 font-mono text-[11px] font-semibold text-navy-deep uppercase" href="tel:+917873112221">Call now</a>
@@ -128,7 +160,7 @@
         <div class="hero-visual">
           <div class="relative border border-white/20 bg-navy p-3 shadow-premium">
             <div class="flex items-center justify-between border-b border-white/15 px-1 pb-3 font-mono text-[9px] tracking-[.12em] text-white/40 uppercase"><span>CCS / Brand assurance</span><span class="text-gold">Independent CB</span></div>
-            <img src="assets/credence-brand.jpg" width="1280" height="668" alt="Credence Certification Services — independent third-party certification and verification" class="mt-3 aspect-[1.916/1] w-full object-cover">
+            <img src="assets/credence-brand.jpg" width="1241" height="1280" alt="Credence Certification Services Pvt. Ltd. — official logo" class="mt-3 max-h-[380px] w-full bg-[#F8F7F3] object-contain p-4">
             <div class="mt-3 flex items-center gap-4 bg-paper px-4 py-4 text-navy-deep sm:px-5">
               <span class="grid size-11 shrink-0 place-items-center rounded-full border border-navy-deep/25 bg-gold text-lg font-bold" aria-hidden="true">✓</span>
               <div><p class="font-mono text-[9px] tracking-[.12em] text-slate-copy uppercase">Operating principle</p><p class="mt-1 font-display text-xl leading-tight font-semibold uppercase sm:text-2xl">Independent. Impartial. Competent.</p></div>
@@ -141,7 +173,7 @@
       <div class="section-shell mt-14 pb-8 lg:mt-16">
         <div class="grid gap-5 border-y border-white/15 py-5 lg:grid-cols-[150px_1fr] lg:items-center">
           <span class="eyebrow text-gold">Certification portfolio</span>
-          <ul class="flex flex-wrap gap-x-7 gap-y-3 font-mono text-[11px] tracking-[.06em] text-white/55 uppercase"><li>ISO 9001</li><li>FSSC 22000</li><li>ISO 50001</li><li>ISO 14001</li><li>ISO 45001</li><li>GHG verification</li></ul>
+          <ul class="flex flex-wrap gap-x-7 gap-y-3 font-mono text-[11px] tracking-[.06em] text-white/55 uppercase"><li>ISO 9001</li><li>FSSC 22000</li><li>ISO 50001</li><li>ISO 14001</li><li>ISO 45001</li><li>GHG verification</li><li><a href="services/cbam-verification/" class="text-gold-light transition hover:underline">CBAM Readiness</a></li></ul>
         </div>
       </div>
     </section>
@@ -164,8 +196,8 @@
             </div>
 
             <div class="mt-9 flex items-center gap-6" aria-hidden="true">
-              <span class="relative grid size-24 shrink-0 place-items-center rounded-full border-[9px] border-white border-r-transparent sm:size-28">
-                <i class="h-6 w-11 -rotate-45 border-b-[9px] border-l-[9px] border-gold"></i>
+              <span class="grid size-24 shrink-0 place-items-center rounded-2xl bg-paper p-2.5 shadow-lg sm:size-28">
+                <svg viewBox="0 0 64 64" class="size-full"><path d="M44 16.5A19.5 19.5 0 1 0 44 47.5" fill="none" stroke="#142E50" stroke-width="6.5" stroke-linecap="round"/><path d="m26 32.5 6.5 6.5 13-15" fill="none" stroke="#C9920F" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
               <span class="h-px flex-1 bg-gradient-to-r from-gold to-transparent"></span>
             </div>
@@ -255,11 +287,58 @@
 
     <section class="section-pad bg-white" id="services" aria-labelledby="services-title">
       <div class="section-shell">
-        <header class="reveal text-center"><p class="eyebrow text-gold">Certification portfolio</p><h2 class="section-heading" id="services-title">Standards, made useful.</h2><p class="section-intro">Select a scheme to understand what it covers and where it fits.</p></header>
-        <div class="mt-14 border-t border-navy-deep md:mt-16">
+        <header class="reveal text-center"><p class="eyebrow text-gold">Certification portfolio</p><h2 class="section-heading" id="services-title">Standards, made useful.</h2><p class="section-intro">Select a service area or scheme below to understand what it covers and where it fits.</p></header>
+
+        <div class="mt-12 grid gap-px border border-navy-deep/20 bg-navy-deep/15 md:grid-cols-2 xl:grid-cols-4">
+          <article class="reveal group relative flex flex-col justify-between bg-navy-deep p-6 text-white transition duration-300 hover:-translate-y-0.5 sm:p-7">
+            <span class="absolute inset-x-0 top-0 h-1 bg-gold" aria-hidden="true"></span>
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="font-mono text-[10px] tracking-[.12em] text-gold uppercase">Climate &amp; Carbon</span>
+                <span class="rounded bg-gold px-2 py-0.5 font-mono text-[9px] font-semibold text-navy-deep uppercase">New</span>
+              </div>
+              <h3 class="mt-5 font-display text-2xl leading-[1.08] font-semibold uppercase">CBAM Verification – EU/UK Export Readiness</h3>
+              <p class="mt-3 text-sm leading-6 text-white/70">Independent CBAM readiness &amp; pre-verification of embedded emissions data for Indian exporters to the EU and UK.</p>
+            </div>
+            <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-white/15 pt-4">
+              <a href="services/cbam-verification/" class="font-mono text-[11px] font-semibold text-gold-light uppercase transition hover:text-gold">Explore service ↗</a>
+              <a href="#contact" data-preset-scheme="CBAM" class="font-mono text-[10px] text-white/75 uppercase underline decoration-gold/60 underline-offset-4 transition hover:text-white">Get a Quote</a>
+            </div>
+          </article>
+
+          <article class="reveal flex flex-col justify-between bg-paper p-6 transition duration-300 hover:bg-white sm:p-7">
+            <div>
+              <span class="font-mono text-[10px] tracking-[.12em] text-gold uppercase">QMS · FSMS</span>
+              <h3 class="mt-5 font-display text-2xl leading-[1.08] font-semibold text-navy-deep uppercase">Quality &amp; Food Safety Systems</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-copy">ISO 9001:2015, ISO 22000, FSSC 22000, ISO 22005 and HACCP assessments for manufacturing and agri-food chains.</p>
+            </div>
+            <a href="#services-directory" class="mt-6 inline-block border-t border-navy-deep/15 pt-4 font-mono text-[11px] font-semibold text-navy-deep uppercase transition hover:text-gold">View schemes ↓</a>
+          </article>
+
+          <article class="reveal flex flex-col justify-between bg-paper p-6 transition duration-300 hover:bg-white sm:p-7">
+            <div>
+              <span class="font-mono text-[10px] tracking-[.12em] text-gold uppercase">EnMS · EMS · GHG</span>
+              <h3 class="mt-5 font-display text-2xl leading-[1.08] font-semibold text-navy-deep uppercase">Energy, Environment &amp; Carbon</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-copy">ISO 50001, ISO 14001 and ISO 14064-1/2/3 validation &amp; verification for industrial facilities and carbon projects.</p>
+            </div>
+            <a href="#services-directory" class="mt-6 inline-block border-t border-navy-deep/15 pt-4 font-mono text-[11px] font-semibold text-navy-deep uppercase transition hover:text-gold">View schemes ↓</a>
+          </article>
+
+          <article class="reveal flex flex-col justify-between bg-paper p-6 transition duration-300 hover:bg-white sm:p-7">
+            <div>
+              <span class="font-mono text-[10px] tracking-[.12em] text-gold uppercase">OH&amp;S · SOC · AGRI</span>
+              <h3 class="mt-5 font-display text-2xl leading-[1.08] font-semibold text-navy-deep uppercase">Safety, Social &amp; Farm Assurance</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-copy">ISO 45001, SA 8000 and GlobalG.A.P./IndiaG.A.P. assurance supporting safe workplaces and export compliance.</p>
+            </div>
+            <a href="#services-directory" class="mt-6 inline-block border-t border-navy-deep/15 pt-4 font-mono text-[11px] font-semibold text-navy-deep uppercase transition hover:text-gold">View schemes ↓</a>
+          </article>
+        </div>
+
+        <div class="mt-14 border-t border-navy-deep md:mt-16" id="services-directory">
           <div class="hidden min-h-12 grid-cols-[90px_minmax(0,1fr)_minmax(180px,1fr)_40px] items-center gap-5 font-mono text-[10px] tracking-[.08em] text-slate-copy uppercase md:grid"><span>Code</span><span>Standard</span><span>Category</span><span>Detail</span></div>
 
-          <details class="service-row reveal border-b border-border-soft" open><summary class="grid min-h-28 cursor-pointer list-none grid-cols-[58px_1fr_36px] items-center gap-4 md:grid-cols-[90px_1fr_1fr_40px]"><span class="font-mono text-[11px] text-gold">QMS</span><strong class="font-display text-2xl font-semibold uppercase md:text-3xl">ISO 9001:2015</strong><small class="col-start-2 text-slate-copy md:col-auto">Quality management</small><i class="service-plus relative col-start-3 row-span-2 row-start-1 size-9 rounded-full border border-border-soft md:col-start-4 md:row-auto before:absolute before:top-1/2 before:left-1/2 before:h-px before:w-3 before:-translate-1/2 before:bg-navy-deep after:absolute after:top-1/2 after:left-1/2 after:h-px after:w-3 after:-translate-1/2 after:rotate-90 after:bg-navy-deep after:transition" aria-hidden="true"></i></summary><div class="service-panel grid gap-5 pb-8 md:grid-cols-[90px_1fr_auto_40px]"><p class="md:col-start-2 max-w-3xl leading-8 text-slate-copy">Certification for organisations seeking to demonstrate consistent quality, customer focus and continual improvement across manufacturing, services, trading and the public sector.</p><a class="md:col-start-3 self-end border-b border-gold font-mono text-[11px] font-semibold uppercase" href="#contact">Discuss your scope ↗</a></div></details>
+          <details class="service-row reveal border-b border-border-soft" open><summary class="grid min-h-28 cursor-pointer list-none grid-cols-[58px_1fr_36px] items-center gap-4 md:grid-cols-[90px_1fr_1fr_40px]"><span class="font-mono text-[11px] text-gold">CBAM</span><strong class="font-display text-2xl font-semibold uppercase md:text-3xl">CBAM Readiness &amp; Pre-Verification</strong><small class="col-start-2 text-slate-copy md:col-auto">Climate, Carbon &amp; Sustainability Assurance</small><i class="service-plus relative col-start-3 row-span-2 row-start-1 size-9 rounded-full border border-border-soft md:col-start-4 md:row-auto before:absolute before:top-1/2 before:left-1/2 before:h-px before:w-3 before:-translate-1/2 before:bg-navy-deep after:absolute after:top-1/2 after:left-1/2 after:h-px after:w-3 after:-translate-1/2 after:rotate-90 after:bg-navy-deep after:transition" aria-hidden="true"></i></summary><div class="service-panel grid gap-5 pb-8 md:grid-cols-[90px_1fr_auto_40px]"><p class="md:col-start-2 max-w-3xl leading-8 text-slate-copy">Independent readiness assessment, CN code review, monitoring-plan checks and pre-verification of embedded emissions data for Indian exporters of steel, aluminium, cement, fertilisers, hydrogen and electricity to the EU and UK.</p><div class="md:col-start-3 flex flex-col items-start gap-2 self-end"><a class="border-b border-gold font-mono text-[11px] font-semibold uppercase" href="services/cbam-verification/">Open CBAM page ↗</a><a class="font-mono text-[11px] text-slate-copy uppercase hover:text-navy-deep" href="#contact" data-preset-scheme="CBAM">Get a CBAM Quote ↗</a></div></div></details>
+          <details class="service-row reveal border-b border-border-soft"><summary class="grid min-h-28 cursor-pointer list-none grid-cols-[58px_1fr_36px] items-center gap-4 md:grid-cols-[90px_1fr_1fr_40px]"><span class="font-mono text-[11px] text-gold">QMS</span><strong class="font-display text-2xl font-semibold uppercase md:text-3xl">ISO 9001:2015</strong><small class="col-start-2 text-slate-copy md:col-auto">Quality management</small><i class="service-plus relative col-start-3 row-span-2 row-start-1 size-9 rounded-full border border-border-soft md:col-start-4 md:row-auto before:absolute before:top-1/2 before:left-1/2 before:h-px before:w-3 before:-translate-1/2 before:bg-navy-deep after:absolute after:top-1/2 after:left-1/2 after:h-px after:w-3 after:-translate-1/2 after:rotate-90 after:bg-navy-deep after:transition" aria-hidden="true"></i></summary><div class="service-panel grid gap-5 pb-8 md:grid-cols-[90px_1fr_auto_40px]"><p class="md:col-start-2 max-w-3xl leading-8 text-slate-copy">Certification for organisations seeking to demonstrate consistent quality, customer focus and continual improvement across manufacturing, services, trading and the public sector.</p><a class="md:col-start-3 self-end border-b border-gold font-mono text-[11px] font-semibold uppercase" href="#contact">Discuss your scope ↗</a></div></details>
           <details class="service-row reveal border-b border-border-soft"><summary class="grid min-h-28 cursor-pointer list-none grid-cols-[58px_1fr_36px] items-center gap-4 md:grid-cols-[90px_1fr_1fr_40px]"><span class="font-mono text-[11px] text-gold">FSMS</span><strong class="font-display text-2xl font-semibold uppercase md:text-3xl">ISO 22000 / FSSC 22000</strong><small class="col-start-2 text-slate-copy md:col-auto">Food safety management</small><i class="service-plus relative col-start-3 row-span-2 row-start-1 size-9 rounded-full border border-border-soft md:col-start-4 md:row-auto before:absolute before:top-1/2 before:left-1/2 before:h-px before:w-3 before:-translate-1/2 before:bg-navy-deep after:absolute after:top-1/2 after:left-1/2 after:h-px after:w-3 after:-translate-1/2 after:rotate-90 after:bg-navy-deep after:transition" aria-hidden="true"></i></summary><div class="service-panel grid gap-5 pb-8 md:grid-cols-[90px_1fr_auto_40px]"><p class="md:col-start-2 max-w-3xl leading-8 text-slate-copy">Certification for food and feed supply-chain organisations covering hazards, prerequisite programmes and traceability.</p><a class="md:col-start-3 self-end border-b border-gold font-mono text-[11px] font-semibold uppercase" href="#contact">Discuss your scope ↗</a></div></details>
           <details class="service-row reveal border-b border-border-soft"><summary class="grid min-h-28 cursor-pointer list-none grid-cols-[58px_1fr_36px] items-center gap-4 md:grid-cols-[90px_1fr_1fr_40px]"><span class="font-mono text-[11px] text-gold">EnMS</span><strong class="font-display text-2xl font-semibold uppercase md:text-3xl">ISO 50001</strong><small class="col-start-2 text-slate-copy md:col-auto">Energy management</small><i class="service-plus relative col-start-3 row-span-2 row-start-1 size-9 rounded-full border border-border-soft md:col-start-4 md:row-auto before:absolute before:top-1/2 before:left-1/2 before:h-px before:w-3 before:-translate-1/2 before:bg-navy-deep after:absolute after:top-1/2 after:left-1/2 after:h-px after:w-3 after:-translate-1/2 after:rotate-90 after:bg-navy-deep after:transition" aria-hidden="true"></i></summary><div class="service-panel grid gap-5 pb-8 md:grid-cols-[90px_1fr_auto_40px]"><p class="md:col-start-2 max-w-3xl leading-8 text-slate-copy">Certification for organisations improving energy performance, reducing costs and demonstrating energy-efficiency commitments.</p><a class="md:col-start-3 self-end border-b border-gold font-mono text-[11px] font-semibold uppercase" href="#contact">Discuss your scope ↗</a></div></details>
           <details class="service-row reveal border-b border-border-soft"><summary class="grid min-h-28 cursor-pointer list-none grid-cols-[58px_1fr_36px] items-center gap-4 md:grid-cols-[90px_1fr_1fr_40px]"><span class="font-mono text-[11px] text-gold">EMS</span><strong class="font-display text-2xl font-semibold uppercase md:text-3xl">ISO 14001</strong><small class="col-start-2 text-slate-copy md:col-auto">Environmental management</small><i class="service-plus relative col-start-3 row-span-2 row-start-1 size-9 rounded-full border border-border-soft md:col-start-4 md:row-auto before:absolute before:top-1/2 before:left-1/2 before:h-px before:w-3 before:-translate-1/2 before:bg-navy-deep after:absolute after:top-1/2 after:left-1/2 after:h-px after:w-3 after:-translate-1/2 after:rotate-90 after:bg-navy-deep after:transition" aria-hidden="true"></i></summary><div class="service-panel grid gap-5 pb-8 md:grid-cols-[90px_1fr_auto_40px]"><p class="md:col-start-2 max-w-3xl leading-8 text-slate-copy">Certification covering systematic environmental responsibility, resource use, waste, emissions and regulatory compliance.</p><a class="md:col-start-3 self-end border-b border-gold font-mono text-[11px] font-semibold uppercase" href="#contact">Discuss your scope ↗</a></div></details>
@@ -423,13 +502,54 @@
       </div>
     </section>
 
+    <section class="section-pad bg-paper" id="resources" aria-labelledby="resources-title">
+      <div class="section-shell">
+        <div class="reveal flex flex-col gap-6 border-b border-navy-deep/20 pb-8 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="eyebrow text-gold">Resources &amp; Insights</p>
+            <h2 class="mt-4 font-display text-[36px] leading-[1.02] font-semibold tracking-[-.035em] uppercase sm:text-[44px] lg:text-[56px]" id="resources-title">Export compliance briefings.</h2>
+          </div>
+          <a href="resources/" class="inline-flex min-h-11 items-center gap-3 self-start rounded-lg border border-navy-deep/25 bg-white px-4 font-mono text-[11px] font-semibold text-navy-deep uppercase transition hover:border-gold hover:bg-gold">All resources &amp; insights ↗</a>
+        </div>
+
+        <article class="reveal mt-10 grid overflow-hidden border border-navy-deep/20 bg-white shadow-premium lg:grid-cols-[.85fr_1.15fr]">
+          <div class="relative flex flex-col justify-between bg-navy-deep p-7 text-white sm:p-10">
+            <div>
+              <div class="flex items-center justify-between border-b border-white/15 pb-4">
+                <span class="font-mono text-[11px] tracking-[.12em] text-gold uppercase">Insights · CBAM 2026</span>
+                <span class="font-mono text-[10px] text-white/50 uppercase">Nov 2026</span>
+              </div>
+              <p class="mt-8 font-display text-3xl leading-[1.05] font-semibold uppercase sm:text-4xl">Definitive period began <span class="text-gold">1 January 2026.</span></p>
+              <p class="mt-4 text-sm leading-6 text-white/70">The first annual CBAM declaration covering 2026 imports is due by 30 September 2027. Data is being generated in Indian plants today.</p>
+            </div>
+            <div class="mt-8 grid grid-cols-2 gap-4 border-t border-white/15 pt-5 font-mono text-[10px] uppercase">
+              <div><span class="block text-white/45">Declaration deadline</span><strong class="mt-1 block text-sm text-gold-light">30 Sep 2027</strong></div>
+              <div><span class="block text-white/45">Default mark-up</span><strong class="mt-1 block text-sm text-gold-light">Rising yearly</strong></div>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-between p-7 sm:p-10">
+            <div>
+              <span class="gold-label">Featured briefing · Climate, Carbon &amp; Sustainability Assurance</span>
+              <h3 class="mt-4 font-display text-3xl leading-[1.08] font-semibold text-navy-deep uppercase sm:text-4xl">CBAM 2026: What Indian Exporters Must Do Before the 30 September 2027 Declaration</h3>
+              <p class="mt-5 text-[15px] leading-7 text-slate-copy">A practical guide for Indian manufacturers and exporters of steel, aluminium, cement, fertilisers, hydrogen and electricity—covering CN code applicability, monitoring boundaries, electricity emission factors, default-value mark-ups and pre-verification readiness.</p>
+            </div>
+            <div class="mt-8 flex flex-wrap items-center gap-4 border-t border-navy-deep/15 pt-6">
+              <a href="resources/cbam-2026-indian-exporters/" class="primary-button">Read the full briefing ↗</a>
+              <a href="services/cbam-verification/" class="inline-flex min-h-12 items-center gap-2 rounded-lg border border-navy-deep/25 px-5 py-3 font-mono text-xs font-semibold text-navy-deep uppercase transition hover:border-gold hover:bg-paper">CBAM Service Page →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section class="section-pad bg-navy-deep text-white" id="contact" aria-labelledby="contact-title">
       <div class="section-shell">
-        <header class="reveal text-center"><p class="eyebrow text-gold">Start a scope discussion</p><h2 class="section-heading text-white" id="contact-title">Ready to get certified?</h2><p class="section-intro text-white/55">No obligation. No consulting pitch. Just a clear conversation about your certification scope.</p></header>
+        <header class="reveal text-center"><p class="eyebrow text-gold">Start a scope discussion</p><h2 class="section-heading text-white" id="contact-title">Ready to get certified?</h2><p class="section-intro text-white/55">No obligation. No consulting pitch. Just a clear conversation about your certification or verification scope.</p><div class="mt-6 flex flex-wrap justify-center gap-3"><a href="#contact-form" data-preset-scheme="CBAM" class="inline-flex min-h-11 items-center gap-3 rounded-lg border border-gold/60 bg-navy px-4 py-2 font-mono text-[11px] font-semibold text-gold-light uppercase transition hover:bg-gold hover:text-navy-deep">Get a Quote — CBAM Export Readiness ↗</a></div></header>
         <div class="mt-14 grid gap-12 md:mt-16 lg:grid-cols-[1.35fr_.65fr] lg:gap-16">
           <form class="reveal grid gap-5" id="contact-form" novalidate>
             <div class="grid gap-5 sm:grid-cols-2"><label class="grid gap-2"><span class="font-mono text-[10px] tracking-[.08em] text-white/45 uppercase">Name</span><input class="min-h-12 rounded-lg border border-white/20 bg-white/[.035] px-4 text-white outline-none transition focus:border-gold" type="text" name="name" autocomplete="name" required></label><label class="grid gap-2"><span class="font-mono text-[10px] tracking-[.08em] text-white/45 uppercase">Organisation name</span><input class="min-h-12 rounded-lg border border-white/20 bg-white/[.035] px-4 text-white outline-none transition focus:border-gold" type="text" name="organisation" autocomplete="organization" required></label></div>
-            <div class="grid gap-5 sm:grid-cols-2"><label class="grid gap-2"><span class="font-mono text-[10px] tracking-[.08em] text-white/45 uppercase">Employee count</span><input class="min-h-12 rounded-lg border border-white/20 bg-white/[.035] px-4 text-white outline-none transition focus:border-gold" type="number" name="employees" min="1" inputmode="numeric"></label><label class="grid gap-2"><span class="font-mono text-[10px] tracking-[.08em] text-white/45 uppercase">Certification scheme</span><select class="min-h-12 rounded-lg border border-white/20 bg-navy-deep px-4 text-white outline-none transition focus:border-gold" name="scheme" required><option value="">Select a scheme</option><option>ISO 9001</option><option>FSSC 22000</option><option>ISO 50001</option><option>ISO 14001</option><option>ISO 45001</option><option>GHG Verification</option><option>ISO 22005</option><option>HACCP</option><option>SA 8000</option><option>GlobalG.A.P.</option></select></label></div>
+            <div class="grid gap-5 sm:grid-cols-2"><label class="grid gap-2"><span class="font-mono text-[10px] tracking-[.08em] text-white/45 uppercase">Employee count</span><input class="min-h-12 rounded-lg border border-white/20 bg-white/[.035] px-4 text-white outline-none transition focus:border-gold" type="number" name="employees" min="1" inputmode="numeric"></label><label class="grid gap-2"><span class="font-mono text-[10px] tracking-[.08em] text-white/45 uppercase">Certification scheme</span><select class="min-h-12 rounded-lg border border-white/20 bg-navy-deep px-4 text-white outline-none transition focus:border-gold" name="scheme" required><option value="">Select a scheme</option><option value="CBAM Readiness &amp; Pre-Verification">CBAM Readiness &amp; Pre-Verification (EU/UK CBAM)</option><option>ISO 9001</option><option>FSSC 22000</option><option>ISO 50001</option><option>ISO 14001</option><option>ISO 45001</option><option>GHG Verification</option><option>ISO 22005</option><option>HACCP</option><option>SA 8000</option><option>GlobalG.A.P.</option></select></label></div>
             <label class="grid gap-2"><span class="font-mono text-[10px] tracking-[.08em] text-white/45 uppercase">Message</span><textarea class="rounded-lg border border-white/20 bg-white/[.035] px-4 py-3 text-white outline-none transition focus:border-gold" name="message" rows="5" placeholder="Share your scope, location and preferred timeline"></textarea></label>
             <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center"><button class="primary-button" type="submit"><svg class="size-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.447 4.434-9.884 9.888-9.884a9.81 9.81 0 0 1 7.021 2.91 9.81 9.81 0 0 1 2.898 7.027c-.003 5.45-4.445 9.887-9.884 9.887m8.413-18.297A11.82 11.82 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.304-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z"/></svg>Send on WhatsApp</button></div><div class="min-h-6 text-sm text-gold-light" id="form-status" role="status" aria-live="polite"></div>
           </form>
@@ -471,9 +591,9 @@
 
   <footer class="bg-[#081827] px-5 pt-14 pb-24 text-white sm:px-8 sm:pb-6 lg:px-12">
     <div class="mx-auto grid max-w-[1280px] gap-12 md:grid-cols-2 lg:grid-cols-[1.25fr_.6fr_.8fr_1fr]">
-      <div><a href="#home" class="flex items-center gap-3" aria-label="Credence home"><span class="relative size-10 rounded-full border-4 border-white border-r-transparent" aria-hidden="true"><i class="absolute top-[9px] left-[13px] h-2.5 w-4 -rotate-45 border-b-4 border-l-4 border-gold"></i></span><span class="grid gap-1 leading-none"><strong class="font-display text-lg tracking-[.12em] uppercase">Credence</strong><small class="font-mono text-[8px] tracking-[.16em] text-gold-light uppercase">Certification Services</small></span></a><p class="mt-6 max-w-sm text-sm leading-7 text-white/45">Independent Third-Party Certification, Verification &amp; Assessment Services</p><a class="mt-5 inline-block font-display text-2xl text-gold-light" href="tel:+917873112221">+91 78731 12221</a><a class="mt-3 block break-all text-sm text-white/55 transition hover:text-gold-light" href="mailto:business@credencecertification.com">business@credencecertification.com</a></div>
-      <div><h2 class="font-mono text-[10px] tracking-[.1em] text-gold uppercase">Navigate</h2><div class="mt-5 grid gap-2 text-sm text-white/55"><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#process">Process</a><a href="#who-we-serve">Who we serve</a><a href="#empanelment">Empanelment</a><a href="#contact">Contact</a></div></div>
-      <div><h2 class="font-mono text-[10px] tracking-[.1em] text-gold uppercase">Schemes</h2><div class="mt-5 grid gap-2 text-sm text-white/55"><a href="#services">ISO 9001</a><a href="#services">FSSC 22000</a><a href="#services">ISO 50001</a><a href="#services">ISO 14001</a><a href="#services">ISO 45001</a><a href="#services">GHG verification</a></div></div>
+      <div><a href="#home" class="flex items-center gap-3" aria-label="Credence home"><span class="grid size-10 shrink-0 place-items-center rounded-lg bg-paper p-1" aria-hidden="true"><svg viewBox="0 0 64 64" class="size-full"><path d="M44 16.5A19.5 19.5 0 1 0 44 47.5" fill="none" stroke="#142E50" stroke-width="7" stroke-linecap="round"/><path d="m26 32.5 6.5 6.5 13-15" fill="none" stroke="#C9920F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="grid gap-1 leading-none"><strong class="font-display text-lg tracking-[.12em] uppercase">Credence</strong><small class="font-mono text-[8px] tracking-[.16em] text-gold-light uppercase">Certification Services</small></span></a><p class="mt-6 max-w-sm text-sm leading-7 text-white/45">Independent Third-Party Certification, Verification &amp; Assessment Services</p><a class="mt-5 inline-block font-display text-2xl text-gold-light" href="tel:+917873112221">+91 78731 12221</a><a class="mt-3 block break-all text-sm text-white/55 transition hover:text-gold-light" href="mailto:business@credencecertification.com">business@credencecertification.com</a></div>
+      <div><h2 class="font-mono text-[10px] tracking-[.1em] text-gold uppercase">Navigate</h2><div class="mt-5 grid gap-2 text-sm text-white/55"><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#process">Process</a><a href="#who-we-serve">Who we serve</a><a href="#empanelment">Empanelment</a><a href="resources/">Resources</a><a href="#contact">Contact</a></div></div>
+      <div><h2 class="font-mono text-[10px] tracking-[.1em] text-gold uppercase">Schemes</h2><div class="mt-5 grid gap-2 text-sm text-white/55"><a href="services/cbam-verification/" class="text-gold-light hover:underline">CBAM Verification</a><a href="#services">ISO 9001</a><a href="#services">FSSC 22000</a><a href="#services">ISO 50001</a><a href="#services">ISO 14001</a><a href="#services">ISO 45001</a><a href="#services">GHG verification</a></div></div>
       <div><p class="font-display text-3xl leading-tight font-medium uppercase">Need clarity on your scope?</p><a href="#contact" class="mt-6 inline-flex min-h-12 items-center justify-between gap-8 rounded-lg border border-white/30 px-4 font-mono text-[11px] uppercase transition hover:border-gold hover:bg-gold hover:text-navy-deep">Request a quote <span aria-hidden="true">↗</span></a></div>
     </div>
     <div class="mx-auto mt-10 flex max-w-[1280px] flex-col gap-3 border-t border-white/15 pt-5 font-mono text-[9px] text-white/30 sm:flex-row sm:justify-between"><p>© <span id="year">2026</span> Credence Certification Services Pvt. Ltd. All rights reserved.</p><a href="#top">Back to top ↑</a></div>

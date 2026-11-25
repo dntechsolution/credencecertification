@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Independent CBAM readiness and pre-verification for Indian exporters: embedded emissions data checks, readiness assessment and pre-verification reports for EU/UK buyers. Credence Certification Services Private Limited.">
+  <meta name="keywords" content="CBAM verification India, CBAM verifier, embedded emissions verification, EU CBAM compliance for exporters, CBAM steel aluminium cement fertiliser, CBAM readiness assessment">
+  <meta name="theme-color" content="#0D2138">
+  <title>CBAM Readiness &amp; Pre-Verification Services | Credence Certification Services</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/credence-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-navy-deep: #0D2138;
+      --color-navy: #17314F;
+      --color-navy-medium: #203F63;
+      --color-gold: #E4AB3F;
+      --color-gold-light: #F1C86F;
+      --color-paper: #F8F7F3;
+      --color-slate-copy: #5B6775;
+      --color-border-soft: #D8DEE5;
+      --font-display: "Archivo", sans-serif;
+      --font-body: "Manrope", sans-serif;
+      --font-mono: "IBM Plex Mono", monospace;
+      --shadow-premium: 0 28px 70px rgba(13, 33, 56, .14);
+    }
+
+    @layer base {
+      html { scroll-padding-top: 5rem; }
+      body { @apply overflow-x-hidden bg-paper font-body text-navy-deep antialiased; }
+      h1, h2, h3 { @apply font-display text-balance; }
+      a, button, summary { -webkit-tap-highlight-color: transparent; }
+      :focus-visible { @apply outline-3 outline-offset-4 outline-gold; }
+    }
+
+    @layer components {
+      .section-shell { @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12; }
+      .section-pad { @apply py-16 md:py-20 lg:py-24; }
+      .eyebrow { @apply font-mono text-[11px] font-medium tracking-[.16em] uppercase; }
+      .section-heading { @apply mx-auto mt-5 max-w-5xl text-center font-display text-[38px] leading-[1.02] font-semibold tracking-[-.035em] uppercase sm:text-[44px] md:text-[52px] lg:text-[64px]; }
+      .section-intro { @apply mx-auto mt-6 max-w-2xl text-center text-[17px] leading-8 text-slate-copy; }
+      .gold-label { @apply font-mono text-[11px] font-bold tracking-[.12em] text-gold uppercase; }
+      .primary-button { @apply inline-flex min-h-12 items-center justify-center gap-4 rounded-lg bg-gold px-5 py-3 font-mono text-xs font-semibold tracking-[.04em] text-navy-deep uppercase transition duration-200 hover:-translate-y-0.5 hover:bg-gold-light hover:shadow-lg; }
+      .secondary-button { @apply inline-flex min-h-12 items-center justify-center gap-4 rounded-lg border border-white/30 px-5 py-3 font-mono text-xs font-semibold tracking-[.04em] text-white uppercase transition duration-200 hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/5; }
+    }
+
+    .site-header.scrolled, .site-header.menu-open { background: rgba(13,33,56,.98); box-shadow: 0 12px 36px rgba(4,15,27,.22); }
+    .nav-link::after { content: ""; position: absolute; left: 0; bottom: .25rem; width: 100%; height: 1px; background: #E4AB3F; transform: scaleX(0); transform-origin: right; transition: transform .22s ease; }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
+    [data-dropdown].is-open [data-dropdown-panel] { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+    [data-dropdown].is-open [data-dropdown-caret] { transform: rotate(180deg); }
+    .mobile-nav.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .mobile-toggle[aria-expanded="true"] { border-color: rgba(228,171,63,.8); background: rgba(228,171,63,.1); color: #F1C86F; }
+    .mobile-toggle[aria-expanded="true"] .menu-line:nth-of-type(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-toggle[aria-expanded="true"] .menu-line:nth-of-type(2) { opacity: 0; transform: scaleX(.35); }
+    .mobile-toggle[aria-expanded="true"] .menu-line:nth-of-type(3) { transform: translateY(-7px) rotate(-45deg); }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.75,.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .hero-copy, .hero-visual { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.75,.2,1); }
+    .hero-visual { transform: translateX(24px); transition-delay: .12s; }
+    .is-ready .hero-copy, .is-ready .hero-visual { opacity: 1; transform: none; }
+    .timeline-progress { transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(.2,.75,.2,1); }
+    .timeline-progress.drawn { transform: scaleX(1); }
+    .back-to-top { opacity: 0; visibility: hidden; transform: translateY(8px); }
+    .back-to-top.show { opacity: 1; visibility: visible; transform: none; }
+    .float-tooltip { opacity: 0; visibility: hidden; transform: translateX(6px); transition: .2s ease; }
+    .float-group:hover .float-tooltip { opacity: 1; visibility: visible; transform: translateX(0); }
+
+    @media print {
+      header, footer, .sticky-quote-cta, .floating-actions, main { display: none !important; }
+      #cbam-checklist-modal { position: static !important; display: block !important; background: #fff !important; padding: 0 !important; }
+      #cbam-checklist-modal [data-modal-close], #print-checklist, #cbam-checklist-modal .modal-footer-actions { display: none !important; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal, .hero-copy, .hero-visual { opacity: 1; transform: none; }
+    }
+  </style>
+  <script src="../../script.js" defer></script>
+</head>
+<body>
+  <a href="#main-content" class="fixed -top-20 left-4 z-[200] bg-gold px-4 py-3 font-mono text-xs font-semibold text-navy-deep transition-[top] focus:top-4">Skip to content</a>
+
+  <header class="site-header fixed inset-x-0 top-0 z-50 h-20 border-b border-white/10 bg-navy-deep/95 text-white transition duration-300" id="top">
+    <div class="section-shell relative z-50 flex h-full items-center justify-between gap-6">
+      <a href="../../index.html#home" class="flex items-center gap-3" aria-label="Credence Certification Services home">
+        <span class="grid size-10 shrink-0 place-items-center rounded-lg bg-paper p-1 shadow-sm" aria-hidden="true">
+          <svg viewBox="0 0 64 64" class="size-full"><path d="M44 16.5A19.5 19.5 0 1 0 44 47.5" fill="none" stroke="#142E50" stroke-width="7" stroke-linecap="round"/><path d="m26 32.5 6.5 6.5 13-15" fill="none" stroke="#C9920F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="grid gap-1 leading-none"><strong class="font-display text-lg tracking-[.12em] uppercase">Credence</strong><small class="font-mono text-[8px] tracking-[.16em] text-gold-light uppercase">Certification Services</small></span>
+      </a>
+
+      <nav class="hidden items-center gap-3.5 font-mono text-[11px] tracking-[.02em] uppercase xl:flex" aria-label="Primary navigation">
+        <a class="nav-link relative py-3" href="../../index.html#home">Home</a>
+        <a class="nav-link relative py-3" href="../../index.html#about">About</a>
+        <div class="relative" data-dropdown>
+          <button type="button" class="nav-link active relative inline-flex cursor-pointer items-center gap-1.5 py-3 uppercase" data-dropdown-toggle aria-expanded="false" aria-haspopup="true">Services <span data-dropdown-caret class="text-[9px] text-gold transition-transform duration-200" aria-hidden="true">▾</span></button>
+          <div class="pointer-events-none invisible absolute top-full left-0 z-50 mt-1 w-80 -translate-y-1.5 border border-white/15 bg-navy-deep p-3 text-left normal-case shadow-premium opacity-0 transition duration-200" data-dropdown-panel role="menu">
+            <a href="../../index.html#services" class="block rounded-md px-3 py-2.5 transition hover:bg-white/5" role="menuitem">
+              <span class="block font-mono text-[10px] tracking-[.12em] text-gold uppercase">Certification portfolio</span>
+              <span class="mt-0.5 block font-display text-base font-semibold tracking-wide text-white uppercase">All Certification Schemes</span>
+            </a>
+            <div class="my-2 border-t border-white/15"></div>
+            <p class="px-3 pt-1 pb-1.5 font-mono text-[10px] tracking-[.12em] text-gold uppercase">Climate, Carbon &amp; Sustainability Assurance</p>
+            <a href="./" class="block rounded-md border border-gold bg-navy p-3 transition hover:bg-navy-medium" role="menuitem" aria-current="page">
+              <span class="flex items-center justify-between gap-2">
+                <span class="font-display text-base font-semibold tracking-wide text-white uppercase">CBAM Verification</span>
+                <span class="rounded bg-gold px-1.5 py-0.5 font-mono text-[9px] font-semibold text-navy-deep uppercase">EU / UK</span>
+              </span>
+              <span class="mt-1 block text-xs leading-5 text-white/65">Readiness &amp; pre-verification of embedded emissions for exporters</span>
+            </a>
+            <a href="../../index.html#services-directory" class="mt-1.5 block rounded-md px-3 py-2 text-xs text-white/75 transition hover:bg-white/5 hover:text-gold-light" role="menuitem">ISO 14064-1/2/3 GHG Verification →</a>
+          </div>
+        </div>
+        <a class="nav-link relative py-3" href="../../index.html#process">Process</a>
+        <a class="nav-link relative py-3" href="../../index.html#who-we-serve">Who we serve</a>
+        <a class="nav-link relative py-3" href="../../index.html#empanelment">Empanelment</a>
+        <a class="nav-link relative py-3" href="../../resources/">Resources</a>
+        <a class="nav-link relative py-3" href="../../index.html#contact">Contact</a>
+        <a href="#cbam-quote" class="ml-1 inline-flex min-h-11 items-center gap-3 rounded-lg border border-gold bg-gold px-3.5 font-semibold text-navy-deep transition hover:bg-gold-light">Get a quote <span aria-hidden="true">↗</span></a>
+      </nav>
+
+      <button class="mobile-toggle grid size-11 shrink-0 place-items-center rounded-lg border border-white/25 bg-white/[.04] text-white transition duration-200 hover:border-gold hover:text-gold-light xl:hidden" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation">
+        <span class="menu-label sr-only">Open navigation</span>
+        <span class="relative block h-4 w-6" aria-hidden="true"><i class="menu-line absolute top-0 left-0 block h-0.5 w-6 rounded-full bg-current transition duration-200"></i><i class="menu-line absolute top-[7px] left-0 block h-0.5 w-6 rounded-full bg-current transition duration-200"></i><i class="menu-line absolute top-[14px] left-0 block h-0.5 w-6 rounded-full bg-current transition duration-200"></i></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav invisible fixed inset-0 z-40 flex -translate-y-3 flex-col overflow-y-auto bg-navy-deep px-5 pt-28 pb-8 opacity-0 transition duration-200 xl:hidden" id="mobile-nav" aria-label="Mobile navigation">
+      <p class="eyebrow mb-3 text-gold">Navigation</p>
+      <div class="grid">
+        <a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="../../index.html#home">Home <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a>
+        <a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="../../index.html#about">About <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a>
+        <div class="border-b border-white/15 py-3">
+          <a class="flex items-center justify-between font-display text-2xl uppercase" href="../../index.html#services">Services <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a>
+          <div class="mt-2.5 border-l-2 border-gold pl-4">
+            <p class="font-mono text-[10px] tracking-[.12em] text-gold uppercase">Climate, Carbon &amp; Sustainability Assurance</p>
+            <a class="mt-1.5 flex items-center justify-between py-1 font-display text-lg text-gold-light uppercase" href="./" aria-current="page">CBAM Verification <span class="font-mono text-xs" aria-hidden="true">•</span></a>
+          </div>
+        </div>
+        <a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="../../index.html#process">Process <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a>
+        <a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="../../index.html#who-we-serve">Who we serve <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a>
+        <a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="../../index.html#empanelment">Empanelment <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a>
+        <a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="../../resources/">Resources <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a>
+        <a class="flex items-center justify-between border-b border-white/15 py-3 font-display text-2xl uppercase" href="../../index.html#contact">Contact <span class="font-mono text-sm text-gold" aria-hidden="true">→</span></a>
+      </div>
+      <div class="mt-7 grid grid-cols-2 gap-3">
+        <a class="inline-flex min-h-12 items-center justify-center rounded-lg border border-gold bg-gold px-3 font-mono text-[11px] font-semibold text-navy-deep uppercase" href="tel:+917873112221">Call now</a>
+        <a class="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-[#25D366] bg-[#25D366] px-3 font-mono text-[11px] font-semibold text-white uppercase" href="https://wa.me/917873112221?text=Hello%20Credence%20Certification%20Services%2C%20I%20would%20like%20to%20discuss%20CBAM%20readiness%20and%20pre-verification." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="relative overflow-hidden bg-navy-deep pt-28 pb-16 text-white sm:pt-32 lg:pt-36 lg:pb-24" aria-labelledby="cbam-hero-title">
+      <div class="absolute top-0 right-0 h-[420px] w-[420px] translate-x-1/2 -translate-y-1/2 rounded-full border-[56px] border-white/[.035]" aria-hidden="true"></div>
+      <div class="section-shell relative">
+        <nav aria-label="Breadcrumb" class="mb-8 flex flex-wrap items-center gap-2 font-mono text-[10px] tracking-[.1em] text-white/55 uppercase">
+          <a href="../../index.html" class="transition hover:text-gold-light">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="../../index.html#services" class="transition hover:text-gold-light">Services</a>
+          <span aria-hidden="true">/</span>
+          <span>Climate, Carbon &amp; Sustainability Assurance</span>
+          <span aria-hidden="true">/</span>
+          <span class="text-gold">CBAM Verification</span>
+        </nav>
+
+        <div class="grid items-start gap-12 lg:grid-cols-[1.12fr_.88fr] lg:gap-16">
+          <div class="hero-copy">
+            <p class="eyebrow flex items-center gap-3 text-gold"><span class="h-px w-10 bg-gold"></span>Climate, Carbon &amp; Sustainability Assurance</p>
+            <h1 id="cbam-hero-title" class="mt-6 font-display text-[40px] leading-[.98] font-semibold tracking-[-.04em] uppercase sm:text-[52px] lg:text-[68px]">CBAM Readiness &amp; <span class="text-gold">Pre-Verification</span> Services</h1>
+            <p class="mt-5 max-w-2xl font-display text-xl leading-snug text-gold-light uppercase sm:text-2xl">Independent readiness assessment and pre-verification of embedded emissions data for Indian exporters to the EU and UK.</p>
+            <p class="mt-5 max-w-2xl text-[16px] leading-8 text-white/75 sm:text-[17px]">The EU's Carbon Border Adjustment Mechanism (CBAM) entered its definitive period on 1 January 2026. EU importers now pay for the carbon embedded in covered goods, and they can only use an exporter's actual emissions figures if those figures have been independently verified. Credence Certification Services Private Limited helps manufacturers and exporters turn their emissions data into structured, audit-ready evidence, so that buyers can rely on it and you are not forced onto higher default values.</p>
+
+            <div class="mt-6 border-l-2 border-gold bg-navy/80 p-4 text-xs leading-6 text-white/75 sm:p-5">
+              <strong class="font-mono text-[10px] tracking-[.1em] text-gold uppercase">Accreditation Scope Note</strong>
+              <p class="mt-1">Under EU CBAM rules, final verification of actual emissions for an importer's declaration must be conducted by a verifier accredited by an EU/EEA National Accreditation Body. Credence currently provides independent <strong class="text-white">CBAM readiness assessments and pre-verification data checks</strong> while preparing for applicable third-country accreditation. Accredited verification reports are offered only upon grant of applicable EU NAB accreditation.</p>
+            </div>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a class="primary-button" href="#cbam-quote">Get a Quote <span aria-hidden="true">↗</span></a>
+              <a class="secondary-button" href="tel:+917873112221">Talk to our CBAM team <span aria-hidden="true">→</span></a>
+              <button type="button" data-open-modal="cbam-checklist-modal" class="inline-flex min-h-12 cursor-pointer items-center justify-center gap-3 rounded-lg border border-gold/50 bg-white/[.04] px-5 py-3 font-mono text-xs font-semibold tracking-[.04em] text-gold-light uppercase transition duration-200 hover:-translate-y-0.5 hover:border-gold hover:bg-gold/10">Download the CBAM readiness checklist <span aria-hidden="true">↓</span></button>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="relative border border-white/20 bg-navy p-4 shadow-premium sm:p-5">
+              <div class="flex items-center justify-between border-b border-white/15 pb-3 font-mono text-[10px] tracking-[.12em] text-white/50 uppercase">
+                <span class="flex items-center gap-2.5">
+                  <img src="../../assets/credence-icon.svg" width="22" height="22" alt="Credence logo" class="size-5 rounded">
+                  <span>CCS / CBAM-01</span>
+                </span>
+                <span class="text-gold">EU / UK Export Readiness</span>
+              </div>
+
+              <div class="mt-4 overflow-hidden border border-white/15 bg-navy-deep p-5">
+                <svg viewBox="0 0 520 240" class="w-full" role="img" aria-label="Plant to Port CBAM embedded emissions readiness trail">
+                  <rect width="520" height="240" fill="#0D2138"/>
+                  <g stroke="rgba(255,255,255,0.08)" stroke-width="1">
+                    <line x1="0" y1="60" x2="520" y2="60"/>
+                    <line x1="0" y1="120" x2="520" y2="120"/>
+                    <line x1="0" y1="180" x2="520" y2="180"/>
+                    <line x1="130" y1="0" x2="130" y2="240"/>
+                    <line x1="260" y1="0" x2="260" y2="240"/>
+                    <line x1="390" y1="0" x2="390" y2="240"/>
+                  </g>
+                  <path d="M52 162 H468" stroke="#E4AB3F" stroke-width="2" stroke-dasharray="6 5"/>
+                  <g transform="translate(36, 86)">
+                    <rect x="0" y="24" width="68" height="44" fill="#17314F" stroke="#E4AB3F" stroke-width="1.5"/>
+                    <polygon points="0,24 22,8 22,24 44,8 44,24 68,12 68,24" fill="#203F63" stroke="#E4AB3F" stroke-width="1.5"/>
+                    <text x="34" y="96" fill="#F1C86F" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">INDIAN PLANT</text>
+                  </g>
+                  <g transform="translate(188, 72)">
+                    <rect x="0" y="0" width="144" height="72" rx="4" fill="#17314F" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+                    <text x="72" y="24" fill="#E4AB3F" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">PRE-VERIFICATION</text>
+                    <text x="72" y="43" fill="#FFFFFF" font-family="Archivo, sans-serif" font-size="13" font-weight="600" text-anchor="middle">CN CODES · METERING</text>
+                    <text x="72" y="59" fill="rgba(255,255,255,0.65)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">DIRECT · INDIRECT · PRECURSORS</text>
+                  </g>
+                  <g transform="translate(414, 86)">
+                    <rect x="0" y="20" width="74" height="48" fill="#17314F" stroke="#FFFFFF" stroke-width="1.5"/>
+                    <rect x="10" y="30" width="22" height="14" fill="#E4AB3F"/>
+                    <rect x="38" y="30" width="24" height="14" fill="rgba(255,255,255,0.2)"/>
+                    <rect x="10" y="48" width="52" height="10" fill="rgba(255,255,255,0.15)"/>
+                    <text x="37" y="96" fill="#F1C86F" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">EU / UK PORT</text>
+                  </g>
+                  <circle cx="52" cy="162" r="5" fill="#E4AB3F"/>
+                  <circle cx="260" cy="162" r="5" fill="#E4AB3F"/>
+                  <circle cx="468" cy="162" r="5" fill="#E4AB3F"/>
+                </svg>
+              </div>
+
+              <div class="mt-4 grid gap-px bg-white/15 sm:grid-cols-3">
+                <div class="bg-navy-deep p-4">
+                  <span class="font-mono text-[9px] tracking-[.1em] text-white/50 uppercase">Definitive period</span>
+                  <p class="mt-1 font-display text-lg font-semibold text-gold-light uppercase">1 Jan 2026</p>
+                </div>
+                <div class="bg-navy-deep p-4">
+                  <span class="font-mono text-[9px] tracking-[.1em] text-white/50 uppercase">1st Declaration due</span>
+                  <p class="mt-1 font-display text-lg font-semibold text-gold-light uppercase">30 Sep 2027</p>
+                </div>
+                <div class="bg-navy-deep p-4">
+                  <span class="font-mono text-[9px] tracking-[.1em] text-white/50 uppercase">Default mark-up</span>
+                  <p class="mt-1 font-display text-lg font-semibold text-gold-light uppercase">Rises yearly</p>
+                </div>
+              </div>
+
+              <div class="mt-4 flex items-center gap-4 bg-paper px-4 py-4 text-navy-deep">
+                <span class="grid size-10 shrink-0 place-items-center rounded-full border border-navy-deep/25 bg-gold font-bold" aria-hidden="true">✓</span>
+                <div>
+                  <p class="font-mono text-[9px] tracking-[.12em] text-slate-copy uppercase">Cost protection</p>
+                  <p class="mt-0.5 font-display text-lg leading-tight font-semibold uppercase">Audit-ready actuals instead of penalised default values.</p>
+                </div>
+              </div>
+              <span class="absolute -inset-3 -z-10 border border-gold/60" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-paper" id="why-cbam" aria-labelledby="why-cbam-title">
+      <div class="section-shell">
+        <header class="reveal text-center">
+          <p class="eyebrow text-gold">Commercial urgency</p>
+          <h2 class="section-heading" id="why-cbam-title">Why CBAM readiness &amp; pre-verification matters.</h2>
+          <p class="section-intro">Every shipment produced in 2026 feeds into your buyer's first annual CBAM declaration. Waiting until 2027 leaves gaps when records can no longer be reconstructed.</p>
+        </header>
+
+        <div class="mt-12 grid border-t border-l border-navy-deep/20 md:grid-cols-2 lg:grid-cols-3">
+          <article class="reveal border-r border-b border-navy-deep/20 bg-white p-7">
+            <span class="font-mono text-xs font-semibold text-gold">01 / COST PROTECTION</span>
+            <h3 class="mt-5 font-display text-2xl font-semibold uppercase">Avoid the default-value penalty.</h3>
+            <p class="mt-3 text-[15px] leading-7 text-slate-copy">Where actual data is not verified, importers fall back on Commission default values, which carry a mark-up that rises every year (+10% in 2026, +20% in 2027, +30% from 2028). That cost lands on your buyer and, in turn, on your price competitiveness.</p>
+          </article>
+
+          <article class="reveal border-r border-b border-navy-deep/20 bg-white p-7">
+            <span class="font-mono text-xs font-semibold text-gold">02 / MARKET ACCESS</span>
+            <h3 class="mt-5 font-display text-2xl font-semibold uppercase">Win and keep EU/UK buyers.</h3>
+            <p class="mt-3 text-[15px] leading-7 text-slate-copy">Audit-ready, verified data gives European and UK importers the confidence to place long-term orders and reduces supply-chain friction at customs and declaration time.</p>
+          </article>
+
+          <article class="reveal border-r border-b border-navy-deep/20 bg-white p-7">
+            <span class="font-mono text-xs font-semibold text-gold">03 / TRACEABILITY</span>
+            <h3 class="mt-5 font-display text-2xl font-semibold uppercase">Build supply-chain transparency.</h3>
+            <p class="mt-3 text-[15px] leading-7 text-slate-copy">A documented, traceable data trail from plant to port is now a commercial requirement, not an extra—especially when precursor inputs cross multiple suppliers.</p>
+          </article>
+
+          <article class="reveal border-r border-b border-navy-deep/20 bg-white p-7">
+            <span class="font-mono text-xs font-semibold text-gold">04 / EFFICIENCY</span>
+            <h3 class="mt-5 font-display text-2xl font-semibold uppercase">Find data gaps and reduction opportunities.</h3>
+            <p class="mt-3 text-[15px] leading-7 text-slate-copy">Pre-verification exposes weak metering, missing calibration records or boundary errors early, and highlights where emissions—and therefore carbon cost—can be cut.</p>
+          </article>
+
+          <article class="reveal border-r border-b border-navy-deep/20 bg-navy-deep p-7 text-white md:col-span-2">
+            <span class="font-mono text-xs font-semibold text-gold">05 / DEADLINE WATCH</span>
+            <h3 class="mt-5 font-display text-3xl font-semibold uppercase">Stay ahead of the clock.</h3>
+            <p class="mt-3 max-w-2xl text-[15px] leading-7 text-white/75">The first annual CBAM declaration, covering 2026 imports, is due by <strong class="text-gold-light">30 September 2027</strong>. Data is being generated in your plant today—starting readiness checks now prevents last-minute default penalties.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad border-y border-border-soft bg-white" id="who-it-is-for" aria-labelledby="sectors-title">
+      <div class="section-shell">
+        <div class="grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:items-start">
+          <div class="reveal">
+            <p class="eyebrow text-gold">Who it is for</p>
+            <h2 class="mt-4 font-display text-[36px] leading-[1.04] font-semibold tracking-[-.03em] uppercase sm:text-[46px]" id="sectors-title">Built for CBAM-covered exporters &amp; their buyers.</h2>
+            <p class="mt-5 text-[16px] leading-7 text-slate-copy">Manufacturers and exporters of cement, iron and steel, aluminium, fertilisers, hydrogen and electricity, along with their downstream and precursor suppliers, and the EU/UK importers and authorised CBAM declarants who buy from them.</p>
+          </div>
+
+          <div class="reveal grid gap-px border border-navy-deep/20 bg-navy-deep/15 sm:grid-cols-2 md:grid-cols-3">
+            <div class="bg-paper p-5"><span class="gold-label">Sector 01</span><h3 class="mt-3 font-display text-xl font-semibold uppercase">Iron &amp; Steel</h3><p class="mt-2 text-xs leading-5 text-slate-copy">Hot-rolled, cold-rolled, pipes, fasteners, forgings &amp; downstream steel goods.</p></div>
+            <div class="bg-paper p-5"><span class="gold-label">Sector 02</span><h3 class="mt-3 font-display text-xl font-semibold uppercase">Aluminium</h3><p class="mt-2 text-xs leading-5 text-slate-copy">Primary, secondary, extrusions, sheets, foil &amp; cast components.</p></div>
+            <div class="bg-paper p-5"><span class="gold-label">Sector 03</span><h3 class="mt-3 font-display text-xl font-semibold uppercase">Cement</h3><p class="mt-2 text-xs leading-5 text-slate-copy">Clinker, Portland and aluminous cements and calcined clays.</p></div>
+            <div class="bg-paper p-5"><span class="gold-label">Sector 04</span><h3 class="mt-3 font-display text-xl font-semibold uppercase">Fertilisers</h3><p class="mt-2 text-xs leading-5 text-slate-copy">Ammonia, nitric acid, urea and nitrogenous fertiliser products.</p></div>
+            <div class="bg-paper p-5"><span class="gold-label">Sector 05</span><h3 class="mt-3 font-display text-xl font-semibold uppercase">Hydrogen</h3><p class="mt-2 text-xs leading-5 text-slate-copy">Industrial hydrogen production &amp; green hydrogen export pathways.</p></div>
+            <div class="bg-paper p-5"><span class="gold-label">Sector 06</span><h3 class="mt-3 font-display text-xl font-semibold uppercase">Electricity &amp; Precursors</h3><p class="mt-2 text-xs leading-5 text-slate-copy">Electricity generators, upstream precursor suppliers &amp; EU/UK declarants.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-paper" id="cbam-services" aria-labelledby="cbam-services-title">
+      <div class="section-shell">
+        <header class="reveal text-center">
+          <p class="eyebrow text-gold">Scope of support</p>
+          <h2 class="section-heading" id="cbam-services-title">Our CBAM readiness &amp; pre-verification services.</h2>
+          <p class="section-intro">Seven structured deliverables designed to make your installation's emissions data consistent, traceable and ready for formal CBAM verification.</p>
+        </header>
+
+        <div class="mt-12 grid gap-4 md:grid-cols-2">
+          <article class="reveal border border-navy-deep/20 bg-white p-6 sm:p-7">
+            <span class="gold-label">01 · Classification</span>
+            <h3 class="mt-3 font-display text-2xl font-semibold uppercase">Product applicability and CN code review</h3>
+            <p class="mt-3 text-[15px] leading-7 text-slate-copy">We confirm which of your products fall under CBAM and are classified under the correct Combined Nomenclature (CN) codes.</p>
+          </article>
+
+          <article class="reveal border border-navy-deep/20 bg-white p-6 sm:p-7">
+            <span class="gold-label">02 · Boundaries</span>
+            <h3 class="mt-3 font-display text-2xl font-semibold uppercase">Process mapping and data checks</h3>
+            <p class="mt-3 text-[15px] leading-7 text-slate-copy">We map production routes, system boundaries and data flows, and test the reliability of your monitoring set-up.</p>
+          </article>
+
+          <article class="reveal border border-navy-deep/20 bg-white p-6 sm:p-7">
+            <span class="gold-label">03 · Emissions Accounting</span>
+            <h3 class="mt-3 font-display text-2xl font-semibold uppercase">Direct, indirect and precursor emissions checks</h3>
+            <p class="mt-3 text-[15px] leading-7 text-slate-copy">We check direct emissions, indirect emissions and the embedded emissions of precursor materials against EU CBAM calculation rules.</p>
+          </article>
+
+          <article class="reveal border border-navy-deep/20 bg-white p-6 sm:p-7">
+            <span class="gold-label">04 · Power &amp; Utilities</span>
+            <h3 class="mt-3 font-display text-2xl font-semibold uppercase">Electricity emission factor and consumption data checks</h3>
+            <p class="mt-3 text-[15px] leading-7 text-slate-copy">We check metered electricity consumption and the emission factors applied to grid, captive and PPA-sourced power.</p>
+          </article>
+
+          <article class="reveal border border-navy-deep/20 bg-white p-6 sm:p-7">
+            <span class="gold-label">05 · Buyer Reporting</span>
+            <h3 class="mt-3 font-display text-2xl font-semibold uppercase">CBAM data and communication template review</h3>
+            <p class="mt-3 text-[15px] leading-7 text-slate-copy">We review the data you send to EU importers, so that what you report is complete, consistent and traceable.</p>
+          </article>
+
+          <article class="reveal border border-navy-deep/20 bg-white p-6 sm:p-7">
+            <span class="gold-label">06 · Readiness Output</span>
+            <h3 class="mt-3 font-display text-2xl font-semibold uppercase">Pre-verification readiness report</h3>
+            <p class="mt-3 text-[15px] leading-7 text-slate-copy">A clear, structured pre-verification readiness report documenting your data quality, boundary alignment and evidence trail for your EU/UK buyers and accredited verifier.</p>
+          </article>
+
+          <article class="reveal border border-gold bg-navy-deep p-6 text-white sm:p-7 md:col-span-2">
+            <div class="flex flex-col justify-between gap-6 md:flex-row md:items-center">
+              <div class="max-w-3xl">
+                <span class="gold-label">07 · Mock Audit</span>
+                <h3 class="mt-3 font-display text-2xl font-semibold uppercase">Pre-verification readiness assessment</h3>
+                <p class="mt-3 text-[15px] leading-7 text-white/75">A structured mock audit before formal accredited verification that identifies data, metering and documentation gaps early, while there is still time to fix them.</p>
+              </div>
+              <a href="#cbam-quote" class="primary-button shrink-0">Book readiness review ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad border-y border-border-soft bg-[#EEF2F4]" id="how-it-works" aria-labelledby="how-title">
+      <div class="section-shell">
+        <header class="reveal text-center">
+          <p class="eyebrow text-gold">How it works</p>
+          <h2 class="section-heading" id="how-title">Five steps from plant data to export readiness.</h2>
+        </header>
+
+        <div class="relative mt-14">
+          <span class="timeline-progress absolute top-0 right-0 left-0 z-10 hidden h-1 bg-gold lg:block" aria-hidden="true"></span>
+          <ol class="grid border-t border-l border-navy-deep/15 bg-white/70 shadow-[0_20px_60px_rgba(13,33,56,.06)] md:grid-cols-2 lg:grid-cols-5">
+            <li class="reveal border-r border-b border-navy-deep/15 p-6 transition hover:bg-white">
+              <span class="grid size-10 place-items-center rounded-full border border-gold bg-white font-mono text-[10px] text-navy-deep">01</span>
+              <h3 class="mt-7 font-display text-2xl font-semibold uppercase">Scoping call</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-copy">Products, CN codes, installations and buyer requirements.</p>
+            </li>
+            <li class="reveal border-r border-b border-navy-deep/15 p-6 transition hover:bg-white">
+              <span class="grid size-10 place-items-center rounded-full border border-gold bg-white font-mono text-[10px] text-navy-deep">02</span>
+              <h3 class="mt-7 font-display text-2xl font-semibold uppercase">Strategic analysis</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-copy">We review your monitoring plan, methodology and risks.</p>
+            </li>
+            <li class="reveal border-r border-b border-navy-deep/15 p-6 transition hover:bg-white">
+              <span class="grid size-10 place-items-center rounded-full border border-gold bg-white font-mono text-[10px] text-navy-deep">03</span>
+              <h3 class="mt-7 font-display text-2xl font-semibold uppercase">Site visit &amp; evidence</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-copy">On-site checks of production, metering and records.</p>
+            </li>
+            <li class="reveal border-r border-b border-navy-deep/15 p-6 transition hover:bg-white">
+              <span class="grid size-10 place-items-center rounded-full border border-gold bg-white font-mono text-[10px] text-navy-deep">04</span>
+              <h3 class="mt-7 font-display text-2xl font-semibold uppercase">Findings &amp; fixes</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-copy">We share gaps clearly, and your team corrects them.</p>
+            </li>
+            <li class="reveal border-r border-b border-navy-deep/15 p-6 transition hover:bg-white">
+              <span class="grid size-10 place-items-center rounded-full border border-gold bg-white font-mono text-[10px] text-navy-deep">05</span>
+              <h3 class="mt-7 font-display text-2xl font-semibold uppercase">Readiness report</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-copy">Issued once the data meets the required readiness standard.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-white" id="why-credence" aria-labelledby="why-credence-title">
+      <div class="section-shell">
+        <div class="grid items-start gap-10 lg:grid-cols-[.85fr_1.15fr] lg:gap-16">
+          <aside class="reveal bg-navy-deep p-7 text-white shadow-premium sm:p-10">
+            <p class="eyebrow text-gold">Why Credence</p>
+            <h2 class="mt-4 font-display text-3xl leading-[1.06] font-semibold uppercase sm:text-4xl" id="why-credence-title">Credence Certification Services Private Limited</h2>
+            <p class="mt-5 text-sm leading-7 text-white/70">Independent assurance built for real Indian manufacturing plants—with zero consulting conflict on the data we assess.</p>
+            <div class="mt-8 border-t border-white/15 pt-6">
+              <p class="font-mono text-[10px] tracking-[.12em] text-gold uppercase">Related Insights Briefing</p>
+              <a href="../../resources/cbam-2026-indian-exporters/" class="mt-2 block font-display text-xl font-semibold text-white uppercase transition hover:text-gold-light">CBAM 2026: What Indian Exporters Must Do Before the 30 September 2027 Declaration ↗</a>
+            </div>
+          </aside>
+
+          <div class="grid gap-px border border-navy-deep/20 bg-navy-deep/15 sm:grid-cols-2">
+            <article class="reveal bg-paper p-7">
+              <span class="gold-label">01 / Impartiality</span>
+              <h3 class="mt-4 font-display text-2xl font-semibold uppercase">Independent, third-party approach</h3>
+              <p class="mt-3 text-[15px] leading-7 text-slate-copy">With no consulting conflict on the same data, your buyers can trust the objectivity of our readiness findings.</p>
+            </article>
+            <article class="reveal bg-paper p-7">
+              <span class="gold-label">02 / Local Grounding</span>
+              <h3 class="mt-4 font-display text-2xl font-semibold uppercase">India-based plant expertise</h3>
+              <p class="mt-3 text-[15px] leading-7 text-slate-copy">An India-based team that understands Indian industrial plants, captive power, utilities and precursor supply chains.</p>
+            </article>
+            <article class="reveal bg-paper p-7">
+              <span class="gold-label">03 / Buyer Alignment</span>
+              <h3 class="mt-4 font-display text-2xl font-semibold uppercase">Clear EU/UK importer communication</h3>
+              <p class="mt-3 text-[15px] leading-7 text-slate-copy">Structured, unambiguous documentation tailored to what European and UK declarants ask for.</p>
+            </article>
+            <article class="reveal bg-paper p-7">
+              <span class="gold-label">04 / Cost Focus</span>
+              <h3 class="mt-4 font-display text-2xl font-semibold uppercase">Audit-ready actuals over defaults</h3>
+              <p class="mt-3 text-[15px] leading-7 text-slate-copy">Practical focus on preserving your export price competitiveness by getting plant data ready for actual-emissions reporting.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-navy-deep text-white" id="cbam-quote" aria-labelledby="cbam-quote-title">
+      <div class="section-shell">
+        <header class="reveal text-center">
+          <p class="eyebrow text-gold">Get a Quote · CBAM</p>
+          <h2 class="section-heading text-white" id="cbam-quote-title">Request a CBAM readiness quote.</h2>
+          <p class="section-intro text-white/55">Pre-set for CBAM Readiness &amp; Pre-Verification. Share your product lines, CN codes or installation count for a tailored scope call.</p>
+        </header>
+
+        <div class="mt-14 grid gap-12 lg:grid-cols-[1.35fr_.65fr] lg:gap-16">
+          <form class="reveal grid gap-5" id="cbam-quote-form" novalidate>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <label class="grid gap-2"><span class="font-mono text-[10px] tracking-[.08em] text-white/45 uppercase">Name</span><input class="min-h-12 rounded-lg border border-white/20 bg-white/[.035] px-4 text-white outline-none transition focus:border-gold" type="text" name="name" autocomplete="name" required></label>
+              <label class="grid gap-2"><span class="font-mono text-[10px] tracking-[.08em] text-white/45 uppercase">Organisation name</span><input class="min-h-12 rounded-lg border border-white/20 bg-white/[.035] px-4 text-white outline-none transition focus:border-gold" type="text" name="organisation" autocomplete="organization" required></label>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <label class="grid gap-2"><span class="font-mono text-[10px] tracking-[.08em] text-white/45 uppercase">CBAM Sector / Products (e.g. Steel, Aluminium)</span><input class="min-h-12 rounded-lg border border-white/20 bg-white/[.035] px-4 text-white outline-none transition focus:border-gold" type="text" name="sector" placeholder="e.g. Iron &amp; Steel fasteners (CN 7318)"></label>
+              <label class="grid gap-2"><span class="font-mono text-[10px] tracking-[.08em] text-white/45 uppercase">Service / Scheme</span><select class="min-h-12 rounded-lg border border-gold bg-navy-deep px-4 text-white outline-none transition focus:border-gold" name="scheme" required><option value="CBAM Readiness &amp; Pre-Verification" selected>CBAM Readiness &amp; Pre-Verification (EU/UK CBAM)</option><option value="GHG Verification">ISO 14064-1/2/3 GHG Verification</option><option value="ISO 14001">ISO 14001 (EMS)</option><option value="ISO 50001">ISO 50001 (EnMS)</option></select></label>
+            </div>
+            <label class="grid gap-2"><span class="font-mono text-[10px] tracking-[.08em] text-white/45 uppercase">Installations, export destination &amp; timeline</span><textarea class="rounded-lg border border-white/20 bg-white/[.035] px-4 py-3 text-white outline-none transition focus:border-gold" name="message" rows="4" placeholder="Share number of manufacturing sites, target EU/UK buyer timeline and any CN codes"></textarea></label>
+            <div class="flex flex-wrap items-center gap-4">
+              <button class="primary-button" type="submit">Send CBAM Quote Request on WhatsApp ↗</button>
+              <a href="../../index.html?scheme=cbam#contact" class="font-mono text-[11px] text-gold-light uppercase underline underline-offset-4 transition hover:text-white">Or open main Contact page →</a>
+            </div>
+            <div class="min-h-6 text-sm text-gold-light form-status" role="status" aria-live="polite"></div>
+          </form>
+
+          <aside class="reveal border-t-4 border-gold pt-6">
+            <p class="eyebrow text-gold">Talk to our CBAM team</p>
+            <h3 class="mt-4 font-display text-3xl font-semibold uppercase">Credence Certification Services Pvt. Ltd.</h3>
+            <p class="mt-4 text-sm leading-7 text-white/55">Need to review CN code applicability or download our plant readiness checklist before booking a call?</p>
+            <dl class="mt-6">
+              <div class="border-b border-white/15 py-4"><dt class="font-mono text-[9px] tracking-[.1em] text-white/40 uppercase">Call our CBAM desk</dt><dd class="mt-1"><a class="font-display text-2xl font-semibold text-gold-light" href="tel:+917873112221">+91 78731 12221</a></dd></div>
+              <div class="border-b border-white/15 py-4"><dt class="font-mono text-[9px] tracking-[.1em] text-white/40 uppercase">Business email</dt><dd class="mt-1"><a class="break-all text-base font-semibold text-gold-light underline decoration-gold/60 underline-offset-4" href="mailto:business@credencecertification.com">business@credencecertification.com</a></dd></div>
+            </dl>
+            <button type="button" data-open-modal="cbam-checklist-modal" class="mt-6 inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-3 rounded-lg border border-gold/60 bg-white/[.04] px-4 font-mono text-[11px] font-semibold text-gold-light uppercase transition hover:bg-gold hover:text-navy-deep">Download the CBAM readiness checklist ↓</button>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#081827] px-5 pt-14 pb-24 text-white sm:px-8 sm:pb-8 lg:px-12">
+    <div class="mx-auto grid max-w-[1280px] gap-12 md:grid-cols-2 lg:grid-cols-[1.25fr_.6fr_.8fr_1fr]">
+      <div><a href="../../index.html#home" class="flex items-center gap-3" aria-label="Credence home"><span class="grid size-10 shrink-0 place-items-center rounded-lg bg-paper p-1" aria-hidden="true"><svg viewBox="0 0 64 64" class="size-full"><path d="M44 16.5A19.5 19.5 0 1 0 44 47.5" fill="none" stroke="#142E50" stroke-width="7" stroke-linecap="round"/><path d="m26 32.5 6.5 6.5 13-15" fill="none" stroke="#C9920F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="grid gap-1 leading-none"><strong class="font-display text-lg tracking-[.12em] uppercase">Credence</strong><small class="font-mono text-[8px] tracking-[.16em] text-gold-light uppercase">Certification Services</small></span></a><p class="mt-6 max-w-sm text-sm leading-7 text-white/45">Independent Third-Party Certification, Verification &amp; Assessment Services</p><a class="mt-5 inline-block font-display text-2xl text-gold-light" href="tel:+917873112221">+91 78731 12221</a><a class="mt-3 block break-all text-sm text-white/55 transition hover:text-gold-light" href="mailto:business@credencecertification.com">business@credencecertification.com</a></div>
+      <div><h2 class="font-mono text-[10px] tracking-[.1em] text-gold uppercase">Navigate</h2><div class="mt-5 grid gap-2 text-sm text-white/55"><a href="../../index.html#home">Home</a><a href="../../index.html#about">About</a><a href="../../index.html#services">Services</a><a href="../../index.html#process">Process</a><a href="../../index.html#who-we-serve">Who we serve</a><a href="../../index.html#empanelment">Empanelment</a><a href="../../resources/">Resources</a><a href="../../index.html#contact">Contact</a></div></div>
+      <div><h2 class="font-mono text-[10px] tracking-[.1em] text-gold uppercase">Schemes</h2><div class="mt-5 grid gap-2 text-sm text-white/55"><a href="./" class="text-gold-light">CBAM Readiness</a><a href="../../index.html#services">ISO 9001</a><a href="../../index.html#services">FSSC 22000</a><a href="../../index.html#services">ISO 50001</a><a href="../../index.html#services">ISO 14001</a><a href="../../index.html#services">ISO 45001</a><a href="../../index.html#services">GHG verification</a></div></div>
+      <div><p class="font-display text-3xl leading-tight font-medium uppercase">Ready for EU/UK CBAM checks?</p><a href="#cbam-quote" class="mt-6 inline-flex min-h-12 items-center justify-between gap-8 rounded-lg border border-white/30 px-4 font-mono text-[11px] uppercase transition hover:border-gold hover:bg-gold hover:text-navy-deep">Get a Quote <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <div class="mx-auto mt-10 flex max-w-[1280px] flex-col gap-3 border-t border-white/15 pt-5 font-mono text-[9px] text-white/30 sm:flex-row sm:justify-between"><p>© <span id="year">2026</span> Credence Certification Services Pvt. Ltd. All rights reserved.</p><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <!-- Sticky Get a Quote CTA -->
+  <a href="#cbam-quote" class="sticky-quote-cta fixed bottom-4 left-4 z-40 inline-flex min-h-12 items-center gap-3 rounded-full border-2 border-navy-deep bg-gold px-5 font-mono text-xs font-semibold text-navy-deep uppercase shadow-premium transition hover:-translate-y-1 hover:bg-gold-light sm:bottom-5 sm:left-6" aria-label="Get a CBAM Quote">
+    <span>Get a Quote</span>
+    <span aria-hidden="true">↗</span>
+  </a>
+
+  <div class="floating-actions fixed right-3 bottom-3 z-40 flex flex-col-reverse items-center gap-2 rounded-full border border-white/15 bg-navy-deep/90 p-1.5 shadow-xl backdrop-blur sm:right-5 sm:bottom-5 sm:grid sm:justify-items-end sm:gap-3 sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none" aria-label="Quick contact options">
+    <div class="float-group relative flex items-center"><span class="float-tooltip pointer-events-none absolute right-16 hidden rounded-md bg-navy-deep px-3 py-2 font-mono text-[10px] whitespace-nowrap text-white shadow-lg sm:block">WhatsApp</span><a class="grid size-11 place-items-center rounded-full bg-[#25D366] text-white shadow-lg transition duration-200 hover:-translate-y-1 sm:size-14" href="https://wa.me/917873112221?text=Hello%20Credence%20Certification%20Services%2C%20I%20would%20like%20to%20discuss%20CBAM%20readiness%20and%20pre-verification." target="_blank" rel="noopener noreferrer" aria-label="Chat with Credence on WhatsApp"><svg class="size-5 fill-current sm:size-6" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.447 4.434-9.884 9.888-9.884a9.81 9.81 0 0 1 7.021 2.91 9.81 9.81 0 0 1 2.898 7.027c-.003 5.45-4.445 9.887-9.884 9.887m8.413-18.297A11.82 11.82 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.304-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z"/></svg></a></div>
+    <div class="float-group relative flex items-center"><span class="float-tooltip pointer-events-none absolute right-16 hidden rounded-md bg-navy-deep px-3 py-2 font-mono text-[10px] whitespace-nowrap text-white shadow-lg sm:block">Call now</span><a class="grid size-11 place-items-center rounded-full border-2 border-gold bg-navy text-white shadow-lg transition duration-200 hover:-translate-y-1 sm:size-14" href="tel:+917873112221" aria-label="Call Credence at plus 91 78731 12221"><svg class="size-5 fill-current sm:size-6" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.7 15.7 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.7 3.8.7.6 0 1 .4 1 1v3.6c0 .6-.4 1-1 1A17.3 17.3 0 0 1 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.6.7 3.8.1.4 0 .8-.2 1.1l-2.5 1.9Z"/></svg></a></div>
+    <button class="back-to-top absolute right-1.5 bottom-28 grid size-11 place-items-center rounded-full bg-gold text-navy-deep shadow-lg transition duration-200 hover:-translate-y-1 sm:static sm:size-12" id="back-to-top" type="button" aria-label="Back to top"><svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 5-7 7 1.4 1.4 4.6-4.6V20h2V8.8l4.6 4.6L19 12l-7-7Z"/></svg></button>
+  </div>
+
+  <!-- Printable CBAM Readiness Checklist Modal -->
+  <div id="cbam-checklist-modal" data-modal aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="checklist-title" class="fixed inset-0 z-[100] hidden items-center justify-center bg-navy-deep/80 p-4 backdrop-blur-sm">
+    <div class="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto border border-navy-deep/20 bg-white p-6 shadow-premium sm:p-10">
+      <div class="flex items-start justify-between gap-4 border-b border-navy-deep/15 pb-5">
+        <div>
+          <p class="eyebrow text-gold">Credence Certification Services Pvt. Ltd.</p>
+          <h2 id="checklist-title" class="mt-2 font-display text-3xl font-semibold text-navy-deep uppercase">CBAM Readiness Checklist</h2>
+          <p class="mt-1 text-sm text-slate-copy">For Indian exporters preparing 2026 embedded emissions data ahead of the 30 September 2027 EU CBAM declaration.</p>
+        </div>
+        <button type="button" data-modal-close class="grid size-10 shrink-0 cursor-pointer place-items-center rounded-full border border-navy-deep/20 text-navy-deep transition hover:bg-gold" aria-label="Close checklist">✕</button>
+      </div>
+
+      <ol class="mt-6 grid gap-4 text-sm leading-6 text-navy-deep">
+        <li class="border border-navy-deep/15 bg-paper p-4"><strong class="font-mono text-xs text-gold uppercase">01. Product &amp; CN Code Mapping</strong><p class="mt-1">Verify 8-digit Combined Nomenclature (CN) codes for all exported goods and confirm CBAM applicability &amp; aggregated goods categories.</p></li>
+        <li class="border border-navy-deep/15 bg-paper p-4"><strong class="font-mono text-xs text-gold uppercase">02. Installation &amp; Production Route Boundaries</strong><p class="mt-1">Document installation boundaries, production processes, fuel inputs, process emissions and mass-balance reconciliation.</p></li>
+        <li class="border border-navy-deep/15 bg-paper p-4"><strong class="font-mono text-xs text-gold uppercase">03. Metering &amp; Calibration Records</strong><p class="mt-1">Ensure fuel flow meters, weighbridges and electricity sub-meters are calibrated, logged and cross-checked against invoices.</p></li>
+        <li class="border border-navy-deep/15 bg-paper p-4"><strong class="font-mono text-xs text-gold uppercase">04. Precursor Material Data</strong><p class="mt-1">Collect embedded emissions records and supplier communication data for purchased precursors (e.g. clinker, hot-metal, billets, alumina).</p></li>
+        <li class="border border-navy-deep/15 bg-paper p-4"><strong class="font-mono text-xs text-gold uppercase">05. Electricity Consumption &amp; Emission Factors</strong><p class="mt-1">Separate grid, captive and renewable/PPA power consumption and retain supporting utility bills, PPA contracts and emission-factor evidence.</p></li>
+        <li class="border border-navy-deep/15 bg-paper p-4"><strong class="font-mono text-xs text-gold uppercase">06. Importer Communication Template</strong><p class="mt-1">Validate that data shared with EU/UK buyers matches CBAM communication template fields with full traceability back to plant records.</p></li>
+      </ol>
+
+      <div class="modal-footer-actions mt-7 flex flex-wrap items-center justify-between gap-3 border-t border-navy-deep/15 pt-5">
+        <button type="button" id="print-checklist" class="primary-button cursor-pointer">Print / Save as PDF ↗</button>
+        <a href="#cbam-quote" data-modal-close class="inline-flex min-h-12 items-center gap-2 rounded-lg border border-navy-deep/25 px-4 font-mono text-xs font-semibold text-navy-deep uppercase transition hover:border-gold">Book a Readiness Review →</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
